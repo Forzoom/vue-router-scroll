@@ -52,7 +52,7 @@ function clearTempPosition() {
     tempPosition = {};
 }
 
-export default {
+var index = {
     /**
      * 注册过程
      *
@@ -149,3 +149,5 @@ export default {
         }
     },
 };
+
+export default index;

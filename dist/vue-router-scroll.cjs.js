@@ -1,3 +1,5 @@
+'use strict';
+
 function isUndef(v) {
     return v === null || v === undefined;
 }
@@ -52,7 +54,7 @@ function clearTempPosition() {
     tempPosition = {};
 }
 
-export default {
+var index = {
     /**
      * 注册过程
      *
@@ -149,3 +151,5 @@ export default {
         }
     },
 };
+
+module.exports = index;
