@@ -20,3 +20,11 @@
 #### 0.1.1
 
 1. 添加scrollDefaultPosition用于控制默认的显示位置
+
+#### 0.1.2
+
+1. 添加对于params/query的检测
+
+##### Break Change
+
+1. options change from `Vue.use(VueRouteScroll, router)` to `Vue.use(VueRouteScroll, { router, checkParams: true, checkQuery: true, })`;

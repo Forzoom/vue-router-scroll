@@ -9,14 +9,17 @@ npm install @forzoom/vue-router-scroll
 	import router from './router/index.js';
 	import VueRouterScroll from 'vue-router-scroll';
 
-	Vue.use(VueRouterScroll, router);
+	Vue.use(VueRouterScroll, {
+		router,
+	});
 
 	// router/index.js
 	[
 		{
 			path: '/path/to/example',
 			meta: {
-				scrollBehavior: 'top', // top | restore
+				scrollBehavior: 'restore', // top | restore
+				scrollDefaultPosition: '100', // window.scrollY = 100 by default
 			},
 			name: 'test',
 			component: Component,
@@ -24,7 +27,40 @@ npm install @forzoom/vue-router-scroll
 	],
 ```
 
-### Properties
+### Options
+
+options
+
+### router
+
+VueRouter
+
+Vue router instance
+
+### checkParams
+
+Boolean: true by default
+
+whether check param as part of key or not
+
+```javascript
+	e.g.
+
+	var route = {
+		path: '/a/b/c',
+	}
+
+	Vue.use(VueRouteScroll, {
+		router,
+		checkParams: false,
+	});
+```
+
+### checkQuery
+
+Boolean: true by default
+
+options in meta
 
 #### scrollBehavior
 
