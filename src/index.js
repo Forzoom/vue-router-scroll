@@ -58,7 +58,7 @@ function clearTempPosition() {
 function getKey(route, options) {
     var key = route.meta.scrollKey || route.name;
     if (key) {
-        const paramKeys = Object.keys(route.params);
+        var paramKeys = Object.keys(route.params);
         if (options.checkParams && paramKeys.length > 0) {
             key += ('/' + objectValues(route.params).join('/'));
         }
@@ -66,7 +66,7 @@ function getKey(route, options) {
         key = route.path;
     }
     
-    const queryKeys = Object.keys(route.query);
+    var queryKeys = Object.keys(route.query);
     if (options.checkQuery && queryKeys.length > 0) {
         key += ('?' + encode(route.query));
     }
@@ -94,12 +94,12 @@ function objectValues(obj) {
 
 function encode(obj) {
     var keys = Object.keys(obj);
-    var result = '';
+    var result = [];
     for (var i = 0, len = keys.length; i < len; i++) {
         var key = keys[i];
-        result += key + '=' + obj[key];
+        result.push(key + '=' + obj[key]);
     }
-    return result;
+    return result.join('&');
 }
 
 export default {
