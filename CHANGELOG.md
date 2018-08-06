@@ -25,6 +25,12 @@
 
 1. 添加对于params/query的检测
 
+#### 0.1.3
+
+1. 添加部分单元测试
+
 ##### Break Change
+
+#### 0.1.2
 
 1. options change from `Vue.use(VueRouteScroll, router)` to `Vue.use(VueRouteScroll, { router, checkParams: true, checkQuery: true, })`;
