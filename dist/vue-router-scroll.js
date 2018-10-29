@@ -10,7 +10,6 @@
 
     // 判断是否支持popstate
     var supportPopState = 'onpopstate' in window;
-    var isProduction = "production" === 'production';
     var tempPosition = {}; // 临时位置存储
     var position = {}; // 位置存储
 
@@ -115,6 +114,7 @@
          * @param {} Vue
          * @param {} options
          *  - router 路由对象
+         *  - debug 是否debug
          */
         install: function(Vue, options) {
             if (this.installed) {
@@ -127,6 +127,7 @@
                 checkQuery: true,
             });
             var router = options.router;
+            var debug = options.debug;
 
             if (supportPopState) {
                 console.log('[scroll-position] support onpopstate, start work');
@@ -141,7 +142,7 @@
                     var behavior = $route.meta.scrollBehavior;
                     if (behavior === 'restore') {
                         var key = getKey($route, options);
-                        if (!isProduction) {
+                        if (debug) {
                             console.log('[scroll] pop ', key, '->', window.scrollY);
                         }
                         tempPosition[key] = window.scrollY;
@@ -159,7 +160,7 @@
                     var behavior = from.meta.scrollBehavior;
                     if (behavior === 'restore') {
                         var key = getKey(from, options);
-                        if (!isProduction) {
+                        if (debug) {
                             console.log('[scroll] before', key, window.scrollY);
                         }
                         // 不进行处理
@@ -194,7 +195,7 @@
                             var position = getPosition(key) || to.meta.scrollDefaultPosition;
                             if (!isUndef(position)) {
                                 Vue.nextTick(function() {
-                                    if (!isProduction) {
+                                    if (debug) {
                                         console.log('[scroll] restore', position);
                                     }
                                     window.scroll(0, position);
