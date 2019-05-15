@@ -1,4 +1,6 @@
+const path = require('path');
 const replace = require('rollup-plugin-replace');
+const babel = require('rollup-plugin-babel');
 
 module.exports = exports = [
     {
@@ -11,6 +13,7 @@ module.exports = exports = [
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production'),
             }),
+            babel(),
         ],
     },
     {
@@ -23,6 +26,7 @@ module.exports = exports = [
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production'),
             }),
+            babel(),
         ],
     },
     {
@@ -36,6 +40,7 @@ module.exports = exports = [
             replace({
                 'process.env.NODE_ENV': JSON.stringify('production'),
             }),
+            babel(),
         ],
     },
 ];
